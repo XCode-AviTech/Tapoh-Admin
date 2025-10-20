@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/images/logo.png" type="image/x-icon">
+  <title>Score Board | Tapoh Fc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="../assets/css/mobi.css">
+  
+</head>
+<body>
+
+  <div class="header">
+
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="">
+      <div class="info">
+        <h4>Tapoh Fc</h4>
+        <p>Content Management</p>
+      </div>
+    </div>
+
+    <div class="toggle">
+
+      <a href="../assets/php/logout.php" title="Log Out">
+        <i class="bi bi-box-arrow-right"></i>
+      </a>
+      <span id="menuToggle" class="menu-icon">&#9776;</span> <!-- Hamburger icon -->
+    </div>
+
+    <ul id="navMenu" class="nav-links">
+      <li><a href="./index.html">Dashboard</a></li> 
+      <li><a href="./mgt.html">Management</a></li>
+      <li><a href="./shop.html">Merchandise</a></li>
+      <li><a href="./news.html">News</a></li>
+      <li><a href="./players.html">Players</a></li>
+      <li><a href="./match.html">Matches</a></li>
+      <li><a href="./scores.html" class="active">Game Results</a></li> 
+      <li><a href="./gallery.html">Gallery Uploads</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+
+  </div>
+
+  <div class="contents">
+
+    <nav class="navbar shadow-sm">
+      <h5 class="banner">
+          <i class="bi bi-trophy-fill"></i>
+          <span>Game Results</span>
+      </h5>
+    </nav>
+
+    <div class="tbl">
+        <div class="table-responsive">
+            <table id="resultTable" class="table-striped border-secondary table-bordered datatables">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Play-Date</th>
+                        <th>Venue</th>
+                        <th>Home</th>
+                        <th>Score</th>
+                        <th>Away</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>11/12/2025</td>
+                        <td>Kapir Primary School</td>
+                        <td>Tapoh Fc</td>
+                        <td class="text-center">2</td>
+                        <td>Young Stars Fc</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center"><span class="badge bg-danger">Cancelled</span></td>
+                        <td class="buttons">
+                            <button title="Edit Results" class="btn btn-primary edit-match"><i class="bi bi-pencil-square"></i><span>Edit</span></button>
+                            <button title="Delete Results" class="btn btn-danger delete-match"><i class="bi bi-trash3"></i><span>Delete</span></button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+            <!-- Edit Match -->
+            <div class="modal fade" id="editModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header"><h5 class="modal-title">Edit Results</h5></div>
+                    <div class="modal-body">
+                        <form id="editForm">
+                            <div class="mb-3">
+                                <label>Home Score</label>
+                                <input type="number" id="homeScore" class="form-control" placeholder="Home Score">
+                            </div>
+                            <div class="mb-3">
+                                <label>Away Score</label>
+                                <input type="number" id="awayScore" class="form-control" placeholder="Away Score">
+                            </div>
+                            <div class="mb-3">
+                                <label>Match Status</label>
+                                <select id="editStatus" class="form-select" name="edit-status" title="Match Status">
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="Full-time">Full-time</option>
+                                    <option value="Half-time">Half-time</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="Played">Played</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" id="saveEdit">Save Changes</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+
+            <!-- Delete match -->
+            <div class="modal fade" id="deleteModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header"><h5 class="modal-title">Confirm Delete</h5></div>
+                    <div class="modal-body">Delete <strong id="deleteName"></strong>?</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" id="confirmDelete">Delete</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script src="../assets/js/mobile.js"></script>
+  <script src="../assets/js/redirect.js"></script>
+  <script>
+  $(document).ready(function () {
+    
+    let resultTable = $('#resultTable').DataTable({
+      lengthMenu: [5, 10, 25, 50, 100],
+      pageLength: 5, 
+      ordering: true,
+      searching: false,
+      info: false,
+      pagingType: "simple_numbers", 
+    });
+ 
+    // Delete Result
+    
+    let deleteRow;
+    $(document).on("click", ".delete-match", function () {
+      deleteRow = $(this).closest("tr");
+      $("#deleteName").text(deleteRow.find("td:eq(2)").text());
+      $("#deleteModal").modal("show");
+    });
+
+    $("#confirmDelete").on("click", function () {
+      if (deleteRow) {
+        resultTable.row(deleteRow).remove().draw();
+        $("#deleteModal").modal("hide");
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+
+  /* Less than 768px width */
+
+  @media screen and (width < 768px){
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .sidebar,
+    .content,
+    nav.navbar {
+      display: none !important;
+    }
+
+    body::before {
+      content: "📱 Device width too small for panel functionality! Please switch to the mobile version";
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+      animation: pulseWarning 2s infinite;
+    }
+  }
+
+  
+@media  screen and (min-width : 768px) and (max-width: 1084px) {
+    
+  *{
+    font-size: 1rem;
+  }
+    
+  .sidebar {
+    width: 180px;
+    display: block;
+    padding: 8px;
+
+    .logo img{
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo .info{
+      margin-left: 10px;
+    }
+
+    .info h4{
+      font-size: 1rem;
+    }
+
+    .info p{
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    hr{
+      margin: 8px 0;
+    }
+
+    ul.nav{
+      margin-top: 10px;
+
+      li{
+        margin-top: 5px;
+      }
+
+      a{
+        padding: 5px 8px;
+        font-size: 1rem;
+
+        i{
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  hr.foot{
+    margin-top: 45%;
+  }
+
+  .sidebar footer {
+    font-size: 0.5rem;
+  }
+    
+  .content {
+    margin-left: 180px;
+
+    div.info-cards{  
+      justify-content: space-around; 
+
+      .col-md-3{
+        width: 50%;
+      }
+
+      .card{
+        width: 100%;
+
+        h6{
+          font-size: 1rem;
+        }
+
+        p i{
+          font-size: 2rem;
+        }
+
+        i{
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  .tbl .add .btn{
+    padding: 3px 6px;
+  }
+
+  .table-responsive{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .table-responsive .row{
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    justify-content: space-between;
+    overflow: auto;
+
+    table{
+      width: 100vw;
+    }
+
+    .msg{
+      height: 50px;
+      display: none;
+    }
+  }
+
+  .tbl table thead tr th {
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+
+  .tbl table thead tr td {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+
+  .tbl .buttons button i{
+    padding: 0;
+  }
+
+  .tbl .buttons button span{
+    margin-left: 0;
+    display: none;
+  }
+
+  .det{
+    display: none;
+  }
+
+  /* Club Badge */
+  .club-badge {
+    width: 50px;
+    height: 50%;
+  }
+
+}

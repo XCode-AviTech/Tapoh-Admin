@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/images/logo.png" type="image/x-icon">
+  <title>Settings | Tapoh Fc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/orient.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar p-3" id="sidebar">
+
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="">
+      <div class="info">
+        <h4>Tapoh Fc</h4>
+        <p>Content Mgt Panel</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="./index.html" class="nav-link">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="./mgt.html" class="nav-link">
+          <i class="bi bi-briefcase"></i>
+          <span>Management</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./shop.html" class="nav-link">
+          <i class="bi bi-cart"></i>
+          <span>Merchandise</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./news.html" class="nav-link">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./players.html" class="nav-link">
+          <i class="bi bi-people"></i>
+          <span>Players</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./match.html" class="nav-link">
+          <i class="bi bi-calendar-event"></i>
+          <span> Matches</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./scores.html" class="nav-link">
+          <i class="bi bi-trophy"></i>
+          <span>Game Results</span>
+        </a>
+      </li> 
+
+      <li class="nav-item">
+        <a href="./gallery.html" class="nav-link">
+          <i class="bi bi-upload"></i>
+          <span>Gallery Uploads</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="./review.html" class="nav-link">
+          <i class="bi bi-stars"></i>
+          <span>Team Reviews</span>
+        </a>
+      </li>
+
+    </ul>
+    
+    <hr class="foot">
+    
+    <footer>
+      <p>Tapoh FC &copy;<span id="year"></span></p>
+      <p>Developed by <a href="" target="_blank" rel="noopener">X~Code</a></p>
+    </footer>
+  </div>
+
+  <div class="content">
+    
+    <nav class="navbar navbar-expand-lg shadow-sm">
+      <div class="container-fluid">
+        <h5 class="banner">
+          <i class="bi bi-gear-fill"></i>
+          <span>Settings</span>
+        </h5>
+        <div class="right">
+          <div class="notif">
+            <a href="./notifications.html" title="Notifications">
+              <i class="bi bi-bell-fill"></i>
+            </a>
+            <div class="notif-show"></div>
+          </div>
+          <div class="dropdown ms-auto">
+            <a class="d-flex align-items-center dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle"></i>
+              <span>Admin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="./settings.html#profile">
+                  <i class="bi bi-person-fill"></i>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="./settings.html">
+                  <i class="bi bi-gear-fill"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="../assets/php/logout.php">
+                  <i class="bi bi-door-open"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="settings container mt-4">
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs" id="settingsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button">Account</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button">Security</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="devices-tab" data-bs-toggle="tab" data-bs-target="#devices" type="button">Devices</button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content mt-3" id="settingsTabContent">
+
+       <!-- Account Tab -->
+<div class="tab-pane fade show active" id="account" role="tabpanel">
+  <div class="row g-4">
+
+    <!-- Club Info -->
+<div class="col-lg-6 col-md-12">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white d-flex align-items-center">
+      <i class="bi bi-info-circle me-2"></i>
+      <span>Club Overview</span>
+    </div>
+    <div class="card-body">
+      <!-- Badge -->
+      <div class="mb-3 badge-cont">
+        <img src="../assets/images/logo.png" alt="Club Badge" class="club-badge" id="clubBadge">
+        <input type="file" id="badgeInput" class="form-control d-none" accept="image/*" title="Logo">
+        <button class="btn btn-sm btn-primary" id="editBadgeBtn" title="Edit Logo">
+          <i class="bi bi-pencil"></i>
+        </button>
+      </div>
+
+      <!-- Info Table -->
+      <table class="table table-borderless" id="clubTable">
+        <tbody>
+          <tr>
+            <th scope="row">Team Name:</th>
+            <td>Tapoh FC</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary edit-row" title="Edit"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-success save-row d-none" title="Save"><i class="bi bi-check"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Home Venue:</th>
+            <td>Kampala Stadium</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary edit-row" title="Edit"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-success save-row d-none" title="Save"><i class="bi bi-check"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Team Colors:</th>
+            <td>Blue & White</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary edit-row" title="Edit"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-success save-row d-none" title="Save"><i class="bi bi-check"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Founded:</th>
+            <td>2010</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary edit-row" title="Edit"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-success save-row d-none" title="Save"><i class="bi bi-check"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">League:</th>
+            <td>Premier Division</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary edit-row" title="Edit"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-success save-row d-none" title="Save"><i class="bi bi-check"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Nickname:</th>
+            <td>The Blues</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary edit-row" title="Edit"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-success save-row d-none" title="Save"><i class="bi bi-check"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+    <!-- Administration & Contacts -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex align-items-center">
+          <i class="bi bi-person-lines-fill me-2"></i>
+          <span>Administration & Contacts</span>
+        </div>
+        <div class="card-body">
+          <!-- Contacts Table -->
+          <table class="table table-hover table-bordered text-center">
+            <thead class="table-primary">
+              <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Club President</td>
+                <td>Brian Osia</td>
+                <td>+256 700 000000</td>
+              </tr>
+              <tr>
+                <td>Head Coach</td>
+                <td>Allan Etwalu</td>
+                <td>+256 701 111111</td>
+              </tr>
+              <tr>
+                <td>Secretary</td>
+                <td>Jane Kato</td>
+                <td>+256 702 222222</td>
+              </tr>
+              <tr>
+                <td>Media Contact</td>
+                <td>Mark Okello</td>
+                <td>media@tapohfc.com</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="container mt-2">
+            <h5 class="text-center text-primary fw-bold"><i class="bi bi-link-45deg"></i> Update Club Social Links</h5>
+            <form id="socialLinksForm" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Facebook Link</label>
+                <input type="url" id="facebook" class="form-control" placeholder="https://facebook.com/TapohFC">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">WhatsApp Link</label>
+                <input type="url" id="whatsapp" class="form-control" placeholder="https://wa.me/256700000000">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Twitter (X) Link</label>
+                <input type="url" id="twitter" class="form-control" placeholder="https://twitter.com/TapohFC">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">TikTok Link</label>
+                <input type="url" id="tiktok" class="form-control" placeholder="https://tiktok.com/@TapohFC">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">YouTube Link</label>
+                <input type="url" id="youtube" class="form-control" placeholder="https://youtube.com/@TapohFC">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Instagram Link</label>
+                <input type="url" id="instagram" class="form-control" placeholder="https://instagram.com/TapohFC">
+              </div>
+          
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Save Links</button>
+              </div>
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+        <!-- Profile Tab -->
+<div class="tab-pane fade" id="profile" role="tabpanel">
+  <div class="row g-4">
+
+    <!-- Personal Details Card -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Personal Details</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-borderless" id="profileTable">
+  <tbody>
+    <tr>
+      <th scope="row">Full Name:</th>
+      <td>Admin Name</td>
+    </tr>
+    <tr>
+      <th scope="row">Username:</th>
+      <td>admin123</td>
+    </tr>
+    <tr>
+      <th scope="row">Email:</th>
+      <td>admin@gmail.com</td>
+    </tr>
+    <tr>
+      <th scope="row">Phone:</th>
+      <td>+256 700 000023</td>
+    </tr>
+    <tr>
+      <th scope="row">Address:</th>
+      <td>123 Main St, Kampala</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="text-end">
+  <button class="btn btn-primary btn-sm" id="editProfileBtn">
+    <i class="bi bi-pencil-square me-1"></i>Edit
+  </button>
+  <button class="btn btn-success btn-sm d-none" id="saveProfileBtn">
+    <i class="bi bi-check-lg me-1"></i>Save
+  </button>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Logins Card -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Recent Logins</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Date & Time</th>
+                <th>IP Address</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>05-Oct-2025 10:15 AM</td>
+                <td>41.203.45.12</td>
+                <td>Kampala, Uganda</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>04-Oct-2025 08:45 PM</td>
+                <td>41.203.45.12</td>
+                <td>Kampala, Uganda</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>03-Oct-2025 09:30 AM</td>
+                <td>41.203.45.12</td>
+                <td>Kampala, Uganda</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>02-Oct-2025 07:50 PM</td>
+                <td>41.203.45.12</td>
+                <td>Kampala, Uganda</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>01-Oct-2025 12:10 PM</td>
+                <td>41.203.45.12</td>
+                <td>Kampala, Uganda</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <!-- Security Tab -->
+        <div class="tab-pane fade" id="security" role="tabpanel">
+          <div class="row">
+
+            <!-- Password -->
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-header"><i class="bi bi-lock-fill"></i> Change Password</div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label class="form-label">Current Password</label>
+                      <input type="password" class="form-control" placeholder="Current Password">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">New Password</label>
+                      <input type="password" class="form-control" placeholder="New Password">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Confirm New Password</label>
+                      <input type="password" class="form-control" placeholder="Confirm New Password">
+                    </div>
+                    <button class="btn btn-outline-primary" type="submit">Change Password</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-header"><i class="bi bi-shield-lock-fill"></i> Security Settings</div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label class="form-label">Two-Factor Authentication</label>
+                      <select class="form-select" title="2-FA">
+                        <option selected>Enabled</option>
+                        <option>Disabled</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Login Alerts</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked title="Email Alerts">
+                        <label class="form-check-label">Email Alerts</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" title="SMS Alerts">
+                        <label class="form-check-label">SMS Alerts</label>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Save Security Settings</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Devices Tab -->
+        <div class="tab-pane fade tbl" id="devices" role="tabpanel">
+          <div class="table-responsive mt-3">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Action</th>
+                  <th>IP Address</th>
+                  <th>Device / Browser</th>
+                  <th>Location</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2025-10-02 08:30</td>
+                  <td>Logged in</td>
+                  <td>192.168.0.101</td>
+                  <td>Chrome - Windows</td>
+                  <td>Kampala, Uganda</td>
+                  <td class="buttons"><button class="btn btn-sm btn-danger" title="Log Out"><i class="bi bi-door-open"></i><span>Log out</span></button></td>
+                </tr>
+                <tr>
+                  <td>2025-10-01 17:15</td>
+                  <td>Changed Password</td>
+                  <td>192.168.0.102</td>
+                  <td>Firefox - Windows</td>
+                  <td>Kampala, Uganda</td>
+                  <td class="buttons"><button class="btn btn-sm btn-danger" title="Log Out"><i class="bi bi-door-open"></i><span>Log out</span></button></td>
+                </tr>
+                <tr>
+                  <td>2025-09-30 10:05</td>
+                  <td>Updated Profile</td>
+                  <td>192.168.0.103</td>
+                  <td>Edge - Windows</td>
+                  <td>Kampala, Uganda</td>
+                  <td class="buttons"><button class="btn btn-sm btn-danger" title="Log Out"><i class="bi bi-door-open"></i><span>Log out</span></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/redirect.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // 1. Footer Year
+        const yearSpan = document.getElementById("year");
+        if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+        // 2. Remember tab via URL hash
+        const hash = window.location.hash;
+        if(hash) {
+          const tabEl = document.querySelector(`button[data-bs-target="${hash}"]`);
+          if(tabEl) {
+            const tab = new bootstrap.Tab(tabEl);
+            tab.show();
+          }
+        }
+
+        // Update URL hash when tab changes
+        const tabs = document.querySelectorAll('#settingsTab button');
+        tabs.forEach(tabBtn => {
+          tabBtn.addEventListener('shown.bs.tab', function (event) {
+            history.replaceState(null, null, event.target.getAttribute('data-bs-target'));
+          });
+        });
+
+        // 3. Profile & Club Logo file preview
+        function setupFilePreview(inputSelector, imgSelector) {
+          const input = document.querySelector(inputSelector);
+          const img = document.querySelector(imgSelector);
+          if(input && img) {
+            input.addEventListener('change', function() {
+              const file = this.files[0];
+              if(file) img.src = URL.createObjectURL(file);
+            });
+          }
+        }
+
+        setupFilePreview('#profile input[type="file"]', '.profile-img');
+        setupFilePreview('#account input[type="file"]', '#account input[type="file"]'); // Optional for club logo preview
+
+        // 4. Logout confirmation for devices
+        const logoutButtons = document.querySelectorAll('#devices .btn-danger');
+        logoutButtons.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            if(!confirm("Are you sure you want to log out this device?")) e.preventDefault();
+          });
+        });
+
+        // 5. Optional: toggle sidebar
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        if(toggleBtn && sidebar) {
+          toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+          });
+        }
+      });
+
+      // Badge editing
+  const editBadgeBtn = document.getElementById('editBadgeBtn');
+  const badgeInput = document.getElementById('badgeInput');
+  const clubBadge = document.getElementById('clubBadge');
+
+  editBadgeBtn.addEventListener('click', () => {
+    badgeInput.click();
+  });
+
+  badgeInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        clubBadge.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Table row editing
+  const editBtns = document.querySelectorAll('.edit-row');
+  const saveBtns = document.querySelectorAll('.save-row');
+
+  editBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      const td = btn.closest('tr').querySelector('td');
+      td.contentEditable = true;
+      td.classList.add('border', 'border-primary', 'rounded', 'p-1');
+      btn.classList.add('d-none');
+      saveBtns[index].classList.remove('d-none');
+    });
+  });
+
+  saveBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      const td = btn.closest('tr').querySelector('td');
+      td.contentEditable = false;
+      td.classList.remove('border', 'border-primary', 'rounded', 'p-1');
+      btn.classList.add('d-none');
+      editBtns[index].classList.remove('d-none');
+
+      // Optional: send the updated field to server
+      // console.log(td.innerText);
+    });
+  });
+
+  const editBtn = document.getElementById('editProfileBtn');
+  const saveBtn = document.getElementById('saveProfileBtn');
+  const profileTable = document.getElementById('profileTable');
+
+  editBtn.addEventListener('click', () => {
+    profileTable.querySelectorAll('td').forEach(td => td.contentEditable = "true");
+    editBtn.classList.add('d-none'); // Hide edit
+    saveBtn.classList.remove('d-none'); // Show save
+  });
+
+  saveBtn.addEventListener('click', () => {
+    profileTable.querySelectorAll('td').forEach(td => td.contentEditable = "false");
+    editBtn.classList.remove('d-none'); // Show edit
+    saveBtn.classList.add('d-none'); // Hide save
+
+    // Optional: send updated data to server
+    const data = {};
+    profileTable.querySelectorAll('tr').forEach(tr => {
+      const key = tr.querySelector('th').innerText.replace(':','').trim();
+      const value = tr.querySelector('td').innerText.trim();
+      data[key] = value;
+    });
+    console.log('Updated Profile:', data);
+  });
+    </script>
+  </body>
+</html>

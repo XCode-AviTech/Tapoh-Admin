@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/images/logo.png" type="image/x-icon">
+  <title>Matches | Tapoh Fc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/orient.css">
+  
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar p-3" id="sidebar">
+
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="">
+      <div class="info">
+        <h4>Tapoh Fc</h4>
+        <p>Content Mgt Panel</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="./index.html" class="nav-link">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="./mgt.html" class="nav-link">
+          <i class="bi bi-briefcase"></i>
+          <span>Management</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./shop.html" class="nav-link">
+          <i class="bi bi-cart"></i>
+          <span>Merchandise</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./news.html" class="nav-link">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./players.html" class="nav-link">
+          <i class="bi bi-people"></i>
+          <span>Players</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./match.html" class="nav-link active">
+          <i class="bi bi-calendar-event"></i>
+          <span> Matches</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="./scores.html" class="nav-link">
+          <i class="bi bi-trophy"></i>
+          <span>Game Results</span>
+        </a>
+      </li> 
+
+      <li class="nav-item">
+        <a href="./gallery.html" class="nav-link">
+          <i class="bi bi-upload"></i>
+          <span>Gallery Uploads</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="./review.html" class="nav-link">
+          <i class="bi bi-stars"></i>
+          <span>Team Reviews</span>
+        </a>
+      </li>
+
+    </ul>
+    
+    <hr class="foot">
+    
+    <footer>
+      <p>Tapoh FC &copy;<span id="year"></span></p>
+      <p>Developed by <a href="" target="_blank" rel="noopener">X~Code</a></p>
+    </footer>
+  </div>
+
+  <div class="content">
+    
+    <nav class="navbar navbar-expand-lg shadow-sm">
+      <div class="container-fluid">
+        <h5 class="banner">
+          <i class="bi bi-calendar-event-fill"></i>
+          <span>Matches</span>
+        </h5>
+        <div class="right">
+          <div class="notif">
+            <a href="./notifications.html" title="Notifications">
+              <i class="bi bi-bell-fill"></i>
+            </a>
+            <div class="notif-show"></div>
+          </div>
+          <div class="dropdown ms-auto">
+            <a class="d-flex align-items-center dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle"></i>
+              <span>Admin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="./settings.html#profile">
+                  <i class="bi bi-person-fill"></i>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="./settings.html">
+                  <i class="bi bi-gear-fill"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="../assets/php/logout.php">
+                  <i class="bi bi-door-open"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="tbl">
+        <div class="add">
+            <button class="add btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+                <i class="bi bi-calendar-plus-fill"></i>
+                <span>Add Match</span>
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table id="matchTable" class="table-striped border-secondary table-bordered datatables">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Home</th>
+                        <th>Away</th>
+                        <th>Play-Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Fees</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Tapoh Fc</td>
+                        <td>Young Stars Fc</td>
+                        <td>11/12/2025</td>
+                        <td class="text-center">14:00hrs</td>
+                        <td>Kapir Primary School</td>
+                        <td class="text-center">Free</td>
+                        <td class="buttons">
+                            <button title="Edit Match" class="btn btn-primary edit-match"><i class="bi bi-pencil-square"></i></button>
+                            <button title="Delete Match" class="btn btn-danger delete-match"><i class="bi bi-trash3"></i></button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!---Add Match-->
+
+        <div class="modal fade" id="addModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title">Add Match</h5></div>
+                <div class="modal-body">
+                    <form id="uploadForm">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label>Home</label>
+                                <input type="text" id="homeTeam" class="form-control" placeholder="Home Team">
+                            </div>
+                            <div class="col mb-3">
+                                <label>Home Logo</label>
+                                <input type="file" id="home-logo" class="form-control" placeholder="Home Logo">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label>Away Team</label>
+                                <input type="text" id="awayTeam" class="form-control" placeholder="Away Team">
+                            </div>
+                            <div class="col mb-3">
+                                <label>Away Logo</label>
+                                <input type="file" id="away-logo" class="form-control" placeholder="Away Logo">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label>Date</label>
+                                <input type="date" id="date" class="form-control" placeholder="Match Date">
+                            </div>
+                            <div class="col mb-3">
+                                <label>Time</label>
+                                <input type="time" id="time" class="form-control" placeholder="Match Time">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label>Venue</label>
+                                <input type="text" id="venue" class="form-control" placeholder="Match Venue">
+                            </div>
+                            <div class="col mb-3">
+                                <label>Entry Price</label>
+                                <input type="number" id="price" class="form-control" placeholder="Match Fees">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" id="addMatch">Add Match</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+            <!-- Edit Match -->
+            <div class="modal fade" id="editModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header"><h5 class="modal-title">Edit Game</h5></div>
+                    <div class="modal-body">
+                        <form id="editForm">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label>Home</label>
+                                    <input type="text" id="home" class="form-control" placeholder="Home Team">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Home Score</label>
+                                    <input type="number" id="homeScore" class="form-control" placeholder="Home Score">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label>Away Team</label>
+                                    <input type="text" id="away" class="form-control" placeholder="Away Team">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Away Score</label>
+                                    <input type="number" id="awayScore" class="form-control" placeholder="Away Score">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label>Date</label>
+                                    <input type="date" id="matchDate" class="form-control" placeholder="Match Date">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Time</label>
+                                    <input type="time" id="matchTime" class="form-control" placeholder="Match Time">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label>Venue</label>
+                                    <input type="text" id="matchVenue" class="form-control" placeholder="Match Venue">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Match Status</label>
+                                    <select id="editStatus" class="form-select" name="edit-status" title="Match Status">
+                                        <option value="Ongoing">Ongoing</option>
+                                        <option value="Full-time">Full-time</option>
+                                        <option value="Half-time">Half-time</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                        <option value="Played">Played</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" id="saveEdit">Save Changes</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+
+            <!-- Delete match -->
+            <div class="modal fade" id="deleteModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header"><h5 class="modal-title">Confirm Delete</h5></div>
+                    <div class="modal-body">Delete <strong id="deleteName"></strong>?</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" id="confirmDelete">Delete</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+    </div>
+
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script src="../assets/js/redirect.js"></script>
+  <script>
+  $(document).ready(function () {
+    // =========================
+    // Matches Table
+    // =========================
+    let matchTable = $('#matchTable').DataTable({
+      lengthMenu: [5, 10, 25, 50, 100], // Entry selector options
+      pageLength: 5, // Default entries shown
+      ordering: true,
+      searching: true,
+      info: true,
+      pagingType: "simple_numbers",
+      language: {
+        search: "Filter Matches:"
+      }
+    });
+
+    // =========================
+    // Add Match
+    // =========================
+    $("#addMatch").on("click", function () {
+      let name = $("#uploadName").val();
+      let shirt = $("#uploadShirt").val();
+      let position = $("#uploadPosition").val();
+      let status = $("#uploadStatus").val();
+
+      let badgeClass =
+        status === "Active"
+          ? "bg-success"
+          : status === "Loan"
+          ? "bg-warning"
+          : "bg-danger";
+
+      let newRow = matchTable.row.add([
+        matchTable.rows().count() + 1,
+        `<img src="../assets/images/placeholder.jpg" width="50" height="50">`,
+        name,
+        shirt,
+        position,
+        `<span class="badge ${badgeClass}">${status}</span>`,
+        `<button class="btn btn-primary edit-match"><i class="bi bi-pencil-square"></i>Edit</button>
+         <button class="btn btn-danger delete-match"><i class="bi bi-trash3"></i>Delete</button>`
+      ]).draw().node();
+
+      $("#uploadForm")[0].reset();
+      $("#uploadModal").modal("hide");
+    });
+
+    // =========================
+    // Edit Match
+    // =========================
+    let editRow;
+    $(document).on("click", ".edit-match", function () {
+      editRow = $(this).closest("tr");
+      $("#editName").val(editRow.find("td:eq(2)").text());
+      $("#editShirt").val(editRow.find("td:eq(3)").text());
+      $("#editPosition").val(editRow.find("td:eq(4)").text());
+      $("#editStatus").val(editRow.find("td:eq(5)").text().trim());
+      $("#editModal").modal("show");
+    });
+
+    $("#saveEdit").on("click", function () {
+      if (editRow) {
+        let status = $("#editStatus").val();
+        let badgeClass =
+          status === "Active"
+            ? "bg-success"
+            : status === "Loan"
+            ? "bg-warning"
+            : "bg-danger";
+
+        editRow.find("td:eq(2)").text($("#editName").val());
+        editRow.find("td:eq(3)").text($("#editShirt").val());
+        editRow.find("td:eq(4)").text($("#editPosition").val());
+        editRow.find("td:eq(5)").html(`<span class="badge ${badgeClass}">${status}</span>`);
+
+        matchTable.row(editRow).invalidate().draw();
+        $("#editModal").modal("hide");
+      }
+    });
+
+    // =========================
+    // Delete Match
+    // =========================
+    let deleteRow;
+    $(document).on("click", ".delete-match", function () {
+      deleteRow = $(this).closest("tr");
+      $("#deleteName").text(deleteRow.find("td:eq(2)").text());
+      $("#deleteModal").modal("show");
+    });
+
+    $("#confirmDelete").on("click", function () {
+      if (deleteRow) {
+        matchTable.row(deleteRow).remove().draw();
+        $("#deleteModal").modal("hide");
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
